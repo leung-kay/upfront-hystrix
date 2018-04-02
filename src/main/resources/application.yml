@@ -1,0 +1,33 @@
+server:
+  port: 9002
+
+logging:
+  level:
+    root: info
+    com.ruifucredit.cloud.upfront: debug
+
+spring:
+  application:
+    name: ${eureka.instance.appname}
+    
+eureka:
+  instance:
+    appname: upfront-hystrix
+    
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+
+ribbon:
+  ConnectTimeout: 60000
+  ReadTimeout: 60000
+  MaxAutoRetriesNextServer: 0
+  MaxAutoRetries: 0
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
